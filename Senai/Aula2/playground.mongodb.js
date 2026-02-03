@@ -78,4 +78,11 @@ db.people.find({name: /n/}) //Buscar qualquer pessoa quem tem N no nome
 use("Bosch")
 db.people.find({name: /^L.*e$/}) //Busca pessoa que começa com L e termina com E
 
+use("Bosch")
 db.people.find({ $and: [{ name: 'Nicolas' }, { lastname: 'Marques' }] }) //Buscar pessoa especifica
+
+use("Bosch")
+db.people.find({salary: {$gte: 30}}, {name: 1, lastname: 1}) //Tras todos os nomes e sobrenome em que o salario é acima de 30
+
+use("Bosch")
+db.people.find() //
