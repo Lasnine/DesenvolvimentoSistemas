@@ -74,3 +74,8 @@ db.people.find({name: "Dirceu"}) //O parametro para buscar algo em especifico
 
 use("Bosch")
 db.people.find({name: /n/}) //Buscar qualquer pessoa quem tem N no nome
+
+use("Bosch")
+db.people.find({name: /^L.*e$/}) //Busca pessoa que começa com L e termina com E
+
+db.people.find({ $and: [{ name: 'Nicolas' }, { lastname: 'Marques' }] }) //Buscar pessoa especifica
