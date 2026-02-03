@@ -93,7 +93,14 @@ db.people.updateOne(
     { $set:{ name:"Las9" }}
 ); //Altera o nome da pessoa
 
+use("Bosch")
 db.people.updateMany(
-    { salary: 1234 },
-    { $set:{ salary:12345 }}
-); 
+    { salary: 8 },
+    { $set:{ salary:12 }}
+); //Atualiza todos que tem o salario 8
+
+use("Bosch")
+db.people.deleteOne({ name: /Fabio/ }) //Deleta todos que tem o nome "Fabio"
+
+use("Bosch")
+db.people.deleteMany({ name: /n/ })//Deleta todos que tem "N" no nome
