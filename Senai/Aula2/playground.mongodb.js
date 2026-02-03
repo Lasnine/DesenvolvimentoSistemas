@@ -82,7 +82,18 @@ use("Bosch")
 db.people.find({ $and: [{ name: 'Nicolas' }, { lastname: 'Marques' }] }) //Buscar pessoa especifica
 
 use("Bosch")
+db.people.find({ salary: { $gt: 20 } }) //Busca qualquer pessoa com o salario acima de 20
+
+use("Bosch")
 db.people.find({salary: {$gte: 30}}, {name: 1, lastname: 1}) //Tras todos os nomes e sobrenome em que o salario é acima de 30
 
 use("Bosch")
-db.people.find() //
+db.people.updateOne(
+    { _id: ObjectId('6981f25656fb04538ae4f771') },
+    { $set:{ name:"Las9" }}
+); //Altera o nome da pessoa
+
+db.people.updateMany(
+    { salary: 1234 },
+    { $set:{ salary:12345 }}
+); 
