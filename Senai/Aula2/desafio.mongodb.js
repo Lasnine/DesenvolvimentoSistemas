@@ -83,4 +83,12 @@ db.contato.updateMany(
 );
 
 //1.4.1) Deletar:
+use("Telefone")
+db.contato.deleteOne({ email: "amanda.souza@gmail.com" })
+
 //1.4.2) Deletar:
+use("Telefone")
+db.contato.deleteMany({ cidade: "Curitiba" })
+
+use("Telefone")
+db.contato.find()
