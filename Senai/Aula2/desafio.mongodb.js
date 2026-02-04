@@ -61,8 +61,26 @@ use("Telefone")
 db.contato.find({dataCadastro: new ISODate("2023-01-01T00:00:00Z")})
 
 //1.1) Atualizar:
+use("Telefone")
+db.contato.updateOne(
+    { nome: ('Ana Silva') },
+    { $set:{ email:"ana.sillva@gmail.com" }},
+    { $ser:{ telefone: "99854321" }}
+); 
+
 //1.2) Atualizar:
+use("Telefone")
+db.contato.updateOne(
+    { nome: ('Daniel Rocha') },
+    { $set:{ cidade: "Rio de Janeiro" }}
+); 
+
 //1.3) Atualizar:
+use("Telefone")
+db.contato.updateMany(
+    { telefone: /^41/ },
+    { $set:{ cidade: "Curitiba" }}
+);
 
 //1.4.1) Deletar:
 //1.4.2) Deletar:
