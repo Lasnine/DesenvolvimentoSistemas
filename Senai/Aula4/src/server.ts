@@ -1,24 +1,12 @@
 import express from 'express';
+import route from './routes/routes.ts'
 
 const app = express();
 const port = 8080;
-const pessoa = {
-    name: 'Lasnine',
-    lastname: 'Santos',
-    age: 18
-}
+route(app)
 
-const pessoas = 
-app.get('/objeto', (req, res) => {  //forma correta
-    res.send({pessoa: pessoa});
-});
-
-app.get('/diverto', (req, res) => {
-    res.send({pessoa});
-});
-
-app.get('/', (req, res) => {
-    res.send({response: 'API funcionando'});
+app.get('/',(req, res) => {
+    res.status(200).send({response: "API funcionando"})
 });
 
 app.listen(port, () => {
