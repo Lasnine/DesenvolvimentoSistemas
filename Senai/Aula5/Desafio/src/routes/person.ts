@@ -62,6 +62,12 @@ router
         const { name, email, type, active, createdAt } = req.body
         const { id } = req.params
         let update = UserId(id as string, res as Response)
+        let validation = people.find((Person) => Person.email == email)
+        if(validation)
+            {
+                res.status(400).send({message: `Email já esta em uso`})
+                return;
+            }
         if(!update)
         {
             res.status(404).send({message: `Usuario não encontrado, id invalido`})
@@ -78,6 +84,12 @@ router
         const patch = req.body
         const { id } = req.params
         const user = UserId(id as string, res as Response)
+        let validation = people.find((Person) => Person.email == patch.email)
+        if(validation)
+            {
+                res.status(400).send({message: `Email já esta em uso`})
+                return;
+            }
         if(!user) return;
         if(patch.id)
         {
