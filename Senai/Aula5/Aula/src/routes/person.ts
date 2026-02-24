@@ -50,7 +50,7 @@ router
 
     //DESAFIO:
     .get('/user/:id', (req: Request, res: Response) => {
-        const { id } = req.params
+        const { id } = req.body
         let convertedId = Number(id)
         let user = people.find((Person) => Person.id == convertedId)
         res.status(200).send({response: user})
@@ -61,8 +61,9 @@ router
         res.status(200).send({response: `Atualizando usuario ${id} -> ${name} ${lastname}`})
     })
     .delete('/delete/:id', (req: Request, res: Response) => {
-        const { id } = req.params
-        //let user = people.find((Person) => Person.id == { id })
-        res.status(200).send(`Pessoa com o id:  ${id} foi deletada`)
+        const { id } = req.body
+        let convertedId = Number(id)
+        let user = people.find((Person) => Person.id == convertedId)
+        res.status(200).send(`Pessoa com o id:  ${user} foi deletada`)
     })
 export default router;
