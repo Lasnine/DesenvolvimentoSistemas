@@ -1,0 +1,26 @@
+{
+  "name": "aula6",
+  "version": "1.0.0",
+  "description": "Aula6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tsx watch src/server.ts"
+  },
+  "author": "Lasnine",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/config": "^3.3.5",
+    "@types/cors": "^2.8.19",
+    "@types/node": "^25.3.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "config": "^4.4.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.2.2"
+  }
+}
