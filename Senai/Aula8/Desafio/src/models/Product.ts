@@ -2,11 +2,10 @@ import { truncate } from "fs/promises";
 import mongoose, { Schema, Document} from "mongoose";
 
 interface IProduct extends Document {
-    id : number;
     name: string;
     description: string;
     price: number;
-    stock: number;
+    stock: boolean;
     category: string;
     createdAt: Date;
 
@@ -14,12 +13,11 @@ interface IProduct extends Document {
 
 const productSchema: Schema = new Schema(
     {
-        id: { type: Number, required: true, unique: true},
         name: { type: String, required: true },
         description: { type: String, required: false },
         price: { type: Number, required: true },
         stock: { type: Boolean, required: true,  default: 0 },
-        category: { type: Boolean, required: false },
+        category: { type: String, required: false },
         createdAt: { type: Date, required: true, default: Date.now },
     },
     { versionKey: false }
