@@ -8,7 +8,6 @@ interface IProduct extends Document {
     stock: boolean;
     category: string;
     createdAt: Date;
-
 }
 
 const productSchema: Schema = new Schema(

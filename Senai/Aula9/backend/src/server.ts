@@ -6,14 +6,12 @@ import cors from 'cors'
 const router = express.Router()
 const app = express();
 const port = 8080;
-
 app.use (cors({
     origin: '*'
 }))
 
 connectDB()
 route(app)
-
 
 app.get('/',(req, res) => {
     res.status(200).send({response: "API funcionando"})

@@ -3,7 +3,7 @@ import { View, Text, FlatList, TouchableOpacity, StyleSheet, ImageBackground, Al
 import Swal from 'sweetalert2';
 
 interface Produto {
-  _id: string;      // MongoDB usa _id
+  _id: string;     
   name: string;
   price: number;
   description: string;
