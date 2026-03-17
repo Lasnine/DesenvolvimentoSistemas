@@ -1,32 +1,18 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './Home/index.jsx';
+import Cadastro from './Cadastro/index.jsx';
+import Produtos from './Produtos/index.jsx';
 
 function App() {
-  const [products, setProducts] = useState([])
-  const fetch = async () => {
-    const response = await axios.get('http://localhost:8080/product/bar')
-    setProducts(response.data.products)
-  }
-
-  useEffect(() => {
-    fetch();
-  },[])
-
   return (
-    <>
-      {
-        products.map((products) => {
-          return(
-            <div key={products._id}>
-              <span>{products.name}</span>
-              <span>{products.description}</span>
-              <span>{products.price}</span>
-              <span>{products.stock}</span>
-              <span>{products.category}</span>
-            </div>
-          )})}
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Cadastro" element={<Cadastro />} />
+        <Route path="/Produtos" element={<Produtos />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
