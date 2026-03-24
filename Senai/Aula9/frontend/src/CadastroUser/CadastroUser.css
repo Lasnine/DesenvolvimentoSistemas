@@ -1,10 +1,4 @@
-.home-fundo{
-    background-image: url('../assets/oba.jpg'); 
-    background-size: cover;      
-    background-position: center; 
-    background-repeat: no-repeat;
-}
-.home-container{
+.cadastro-container {
     display: flex;            
     flex-direction: column;   
     align-items: center;     
@@ -12,30 +6,28 @@
     margin: 0;
     padding: 0;
 
-    height: 100vh
+    background-image: url('../assets/oba.jpg'); 
+    background-size: cover;      
+    background-position: center; 
+    background-repeat: no-repeat;
+
+    height: 100vh;
+    text-align: center;
 }
+
 html, body, #root {
     height: 100%;
     width: 100%;
     margin: 0;
 }
-.home-title {
+.cadastro-title {
     font-size: 3rem;
     margin-bottom: 1rem;
     color:#5f0b0b;
     font-weight: bold;
 }
 
-.home-logo{
-    width: 200px;      
-    height: 200px;
-    background-image: url('../assets/logo.png'); 
-    background-position: center;
-    background-size: contain;   
-    background-repeat: no-repeat; 
-}
-
-.home-login{
+.cadastro-login{
     width: 60px;      
     height: 60px;
     background-image: url('../assets/login.png');  
@@ -46,25 +38,53 @@ html, body, #root {
     left: 95%;
 }
 
-.home-botao{
+.cadastro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.85); 
+    padding: 20px;
+    border-radius: 15px;
+    width: 400px;
+}
+
+.inline-text {
+    display: inline;
+}
+
+.cadastro-link{
+    color: #5f0b0b;
+    display: inline;
+    cursor: pointer;
+}
+
+.form-input {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.cadastro-botao{
     background: none; 
     border: none;     
     cursor: pointer;
 }
 
-.home-subtitle {
+.cadastro-subtitle {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     color: rgb(10, 51, 23);
     font-weight: bold;
 }
 
-.home-buttons {
+.cadastro-buttons {
     display: flex;
     gap: 20px;
 }
 
-.home-button {
+.cadastro-button {
     border: none;
     padding: 15px 30px;
     font-size: 1rem;
@@ -75,18 +95,8 @@ html, body, #root {
     transition: all 0.3s ease;
 }
 
-.home-button:hover {
+.cadastro-button:hover {
     background-color: #5f0b0b;
     color: #fff;
     transform: scale(1.05);
-}
-
-.home-button.secondary {
-    background-color: #ffccdd;
-    color: #5f0b0b;
-}
-
-.home-button.secondary:hover {
-    background-color: #5f0b0b;
-    color: #fff;
 }
