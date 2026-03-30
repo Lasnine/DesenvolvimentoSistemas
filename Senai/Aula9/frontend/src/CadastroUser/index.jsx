@@ -1,19 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import Swal from 'sweetalert2'
 import '../CadastroUser/CadastroUser.css'
 
 function CadastroUser(){
     const navigate = useNavigate();
-
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleCadastro = async (e) => {
         e.preventDefault();
 
-        if (!name || !email || !senha) {
+        if (!name || !email || !password) {
             alert("Preencha todos os campos!");
             return;
         }
@@ -21,27 +21,28 @@ function CadastroUser(){
         try {
             const response = await axios.post(
                 'http://localhost:8080/usuario/register',
-                {
-                    name: name,
-                    email: email,
-                    password: senha
-                }
-            );
+                {name, email, password});
+                Swal.fire({
+                    title: 'Sucesso!',
+                    text: 'Usuário registrado com sucesso!',
+                    icon: 'sucess'
+                })
 
             console.log("Resposta API:", response.data);
-
             alert("Cadastro realizado com sucesso!");
             navigate('/Login');
 
-        } catch (error) {
-            console.error("Erro ao cadastrar:", error);
-
-            if (error.response) {
-                alert(error.response.data.message || "Erro ao cadastrar");
-            } else {
-                alert("Erro ao conectar com o servidor");
-            }
+        } 
+        catch (error) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Não foi possível registrar o usuário',
+                icon: 'error'
+            })
         }
+        setName('')
+        setEmail('')
+        setPassword('')
     };
 
     return (
@@ -70,8 +71,8 @@ function CadastroUser(){
                 <input 
                     type="password"
                     placeholder="Senha"
-                    value={senha}
-                    onChange={(e) => setSenha(e.target.value)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="form-input"
                 />
 
@@ -80,7 +81,7 @@ function CadastroUser(){
                 </button>
 
                 <div>
-                    <span>Já tem uma conta? </span>
+                    <span>Does have an account? </span>
                     <span 
                         onClick={() => navigate('/Login')} 
                         className="cadastro-link"
