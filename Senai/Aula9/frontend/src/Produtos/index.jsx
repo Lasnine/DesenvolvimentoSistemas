@@ -1,21 +1,19 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import '../Produtos/produtos.css'
 
 function Produto() {
   const [products, setProducts] = useState([])
-  const [message, setMessage] = useState('')
-
   const navigate = useNavigate()
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/product/bar')
-
-      console.log('RESPOSTA API:', response.data)
-      setProducts(response.data?.products || response.data || [])
-
-    } catch (error) {
+      const response = await axios.get('http://localhost:8080/product/')
+      console.log("API RESPONSE:", response.data)
+      setProducts(response.data.response || [])
+    } 
+    catch (error) {
       console.error('Erro ao buscar produtos:', error)
       setProducts([])
     }
@@ -26,34 +24,41 @@ function Produto() {
   }, [])
 
   const handleDelete = async (id) => {
+    const confirm = await Swal.fire({
+      title: 'Tem certeza?',
+      text: 'Esse produto será deletado!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, deletar!',
+      cancelButtonText: 'Cancelar'
+    })
+
+    if (!confirm.isConfirmed) return
     try {
-      await axios.delete(`http://localhost:8080/product/bar/${id}`)
-
+      await axios.delete(`http://localhost:8080/product/delete/${id}`)
+      Swal.fire({
+        title: 'Deletado!',
+        text: 'Produto removido com sucesso!',
+        icon: 'success'
+      })
       fetchProducts()
-      setMessage('Produto deletado com sucesso!')
-      setTimeout(() => setMessage(''), 3000)
-
-    } catch (error) {
+    } 
+    catch (error) {
       console.error('Erro ao deletar:', error)
-      setMessage('Erro ao deletar produto')
+      Swal.fire({
+        title: 'Erro!',
+        text: 'Erro ao deletar produto',
+        icon: 'error'
+      })
     }
   }
 
   return (
     <div className="cadastro-container">
       <h1 className="cadastro-title">Lista de Produtos</h1>
-
-      {message && <p className="message">{message}</p>}
-
-      <button 
-        className="back-button" 
-        onClick={() => navigate('/')}
-      >
-        Voltar
-      </button>
-
+              
       <div className="products-list">
-        {products?.length > 0 ? (
+        {products.length > 0 ? (
           products.map((product) => (
             <div key={product._id} className="card">
 
@@ -80,6 +85,9 @@ function Produto() {
           </p>
         )}
       </div>
+      <button className="back-button" onClick={() => navigate('/')}>
+        Voltar
+      </button>
     </div>
   )
 }

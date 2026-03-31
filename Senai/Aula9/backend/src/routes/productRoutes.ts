@@ -5,9 +5,9 @@ const router: Router = express.Router();
 
 
 router.post('/registrar', validateRegister, UserController.Post);
-router.get('/bar', UserController.Get);
-router.get('/bar/:id', validation, UserController.GetID);
-router.put('/bar/:id', validation,UserController.Put);
-router.delete('/bar/:id', validation, UserController.Delete);
+router.get('/', UserController.Get);
+router.get('/:id', validation, UserController.GetID);
+router.put('/atualizar/:id', validation,UserController.Put);
+router.delete('/delete/:id', UserController.Delete);
 
 export default router;

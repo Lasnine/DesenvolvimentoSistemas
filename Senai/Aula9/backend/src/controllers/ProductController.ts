@@ -39,12 +39,10 @@ class ProductController {
     }
 
     static async Delete(req: Request, res: Response){
-        const product = req.body.product
-        
-        await product.deleteOne()
-        return res.status(200).send({message: "Produto deletado com sucesso"})
+        const { id } = req.params
+        await Product.findByIdAndDelete(id)
+        return res.status(200).send({ message: "Produto deletado com sucesso" })
     }
-
 }
 
 export default ProductController;

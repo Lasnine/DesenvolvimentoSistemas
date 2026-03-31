@@ -1,63 +1,85 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import '../Cadastro/cadastro.css'
 
 function Cadastro() {
-  const [products, setProducts] = useState([])
-  const [message, setMessage] = useState('')
-
+  const [products, setProducts] = useState([]);
+  const [message, setMessage] = useState('');
   const [form, setForm] = useState({
     name: '',
     description: '',
     price: '',
     category: ''
-  })
+  });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/product/bar')
-      setProducts(response.data.products)
+      const response = await axios.get('http://localhost:8080/product/');
+      setProducts(response.data.products);
     } catch (error) {
-      console.error('Erro ao buscar produtos:', error)
+      console.error('Erro ao buscar produtos:', error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
   const handleChange = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    if (!form.name || !form.description || !form.price || !form.category) {
+      Swal.fire({
+        title: 'Atenção!',
+        text: 'Preencha todos os campos!',
+        icon: 'warning'
+      });
+      return;
+    }
 
     try {
-      await axios.post('http://localhost:8080/product/registrar', {
-        ...form,
-        stock: true
-      })
-      fetchProducts()
+      const response = await axios.post(
+        'http://localhost:8080/product/registrar',
+        {
+          ...form,
+          stock: true
+        }
+      );
+
+      Swal.fire({
+        title: 'Sucesso!',
+        text: 'Produto cadastrado com sucesso!',
+        icon: 'success'
+      });
+
+      console.log("Resposta API:", response.data);
+
+      fetchProducts();
+
       setForm({
         name: '',
         description: '',
         price: '',
         category: ''
-      })
-      setMessage('Produto cadastrado com sucesso!')
-      setTimeout(() => {
-        setMessage('')
-      }, 3000)
+      });
+    } 
+    catch (error) {
+      console.error('Erro ao cadastrar:', error);
 
-    } catch (error) {
-      console.error('Erro ao cadastrar:', error)
-      setMessage('Erro ao cadastrar produto')
+      Swal.fire({
+        title: 'Erro!',
+        text: 'Não foi possível cadastrar o produto',
+        icon: 'error'
+      });
     }
   }
 

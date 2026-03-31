@@ -25,7 +25,7 @@ function CadastroUser(){
                 Swal.fire({
                     title: 'Sucesso!',
                     text: 'Usuário registrado com sucesso!',
-                    icon: 'sucess'
+                    icon: 'success'
                 })
 
             console.log("Resposta API:", response.data);

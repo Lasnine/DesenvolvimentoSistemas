@@ -2,6 +2,10 @@ import express from 'express';
 import route from './routes/routes.ts'
 import connectDB from './database/database.ts';
 import cors from 'cors'
+import dotenv from "dotenv";
+
+dotenv.config();
+console.log("SECRET:", process.env.SECRET);
 
 const router = express.Router()
 const app = express();
