@@ -1,0 +1,80 @@
+.cadastro-container {
+    display: flex;            
+    flex-direction: column;   
+    align-items: center;     
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    background-image: url('../assets/fundo.jpg'); 
+    background-size: cover;      
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 100vh;
+    text-align: center;
+}
+
+.message {
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #0a3317;
+}
+
+.cadastro-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #5f0b0b;
+    font-weight: bold;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.85); 
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+}
+
+.form input {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.form button {
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    background-color: #ffccdd;
+    color: #5f0b0b;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.form button:hover {
+    background-color: #5f0b0b;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffccdd;
+    color: #5f0b0b;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    background-color: #5f0b0b;
+    color: #fff;
+}
