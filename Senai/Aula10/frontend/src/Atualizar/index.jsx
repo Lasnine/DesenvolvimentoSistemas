@@ -54,13 +54,18 @@ function Atualizar(){
             });
             return;
         }
+        const confirm = await Swal.fire({
+              title: 'Tem certeza?',
+              text: 'Esse produto será atualizado!',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonText: 'Sim, atualizar!',
+              cancelButtonText: 'Cancelar'
+            })
+        if (!confirm.isConfirmed) return
         try {
             const response = await axios.put(
-                `http://localhost:8080/product/atualizar/${id}`,
-                {
-                    ...form,
-                    stock: true
-                }
+                `http://localhost:8080/product/atualizar/${id}`,{...form, stock: true}
             );
             Swal.fire({
                 title: 'Sucesso!',

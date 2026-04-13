@@ -32,7 +32,6 @@ function Produto() {
       confirmButtonText: 'Sim, deletar!',
       cancelButtonText: 'Cancelar'
     })
-
     if (!confirm.isConfirmed) return
     try {
       await axios.delete(`http://localhost:8080/product/delete/${id}`)

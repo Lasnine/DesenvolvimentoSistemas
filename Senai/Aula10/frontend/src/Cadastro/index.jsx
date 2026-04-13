@@ -7,6 +7,7 @@ import '../Cadastro/cadastro.css'
 function Cadastro() {
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState('');
+  const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: '',
     description: '',
@@ -37,6 +38,8 @@ function Cadastro() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitted(true);
+
     if (!form.name || !form.description || !form.price || !form.category) {
       Swal.fire({
         title: 'Atenção!',
@@ -71,6 +74,7 @@ function Cadastro() {
         price: '',
         category: ''
       });
+      setSubmitted(false);
     } 
     catch (error) {
       console.error('Erro ao cadastrar:', error);
@@ -120,7 +124,7 @@ function Cadastro() {
         />
 
         <button type="submit">Cadastrar</button>
-        <button onClick={() => navigate('/')}>Voltar</button>
+        <button type="button" onClick={() => navigate('/')}>Voltar</button>
       </form>
     </div>
   )

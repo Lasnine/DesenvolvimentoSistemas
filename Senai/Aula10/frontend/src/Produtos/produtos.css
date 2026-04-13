@@ -76,6 +76,7 @@
     color: #5f0b0b;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 18px;
 }
 
 .back-button:hover {
@@ -94,7 +95,7 @@
 }
 
 .card {
-     background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.85);
     padding: 15px;
     border-radius: 15px;
     width: 250px; 
