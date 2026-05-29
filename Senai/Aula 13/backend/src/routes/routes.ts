@@ -1,12 +1,10 @@
 import { Express } from 'express'
 import express from 'express'
-import users from './product.ts'
-import auth from './auth.ts'
+import user from './user.ts'
 
 export default function (app: Express) {
     app
        .use(express.json())
-       .use('/api/products', users)
-       .use('/api/auth', auth)
+       .use('/api/user', user)
 
 }

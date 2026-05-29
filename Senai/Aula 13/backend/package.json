@@ -19,6 +19,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.3",
     "@types/express": "^5.0.6",
     "axios": "^1.14.0",
     "config": "^4.4.0",
